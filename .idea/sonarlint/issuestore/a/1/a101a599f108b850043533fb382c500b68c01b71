@@ -1,0 +1,9 @@
+
+fsquid:UselessImportCheck";Remove this unused import 'javafx.scene.layout.AnchorPane'.(Ψ µ8¶¦·–²-
+[squid:UselessImportCheck"0Remove this unused import 'javafx.scene.Parent'.(²δ΅Θ8µώ–²-
+Tsquid:UselessImportCheck
+")Remove this unused import 'java.io.File'.(†Π¥Ε8Εκ–²-
+Ysquid:UselessImportCheck")Remove this unused import 'java.net.URL'.(ρμΑ„όÿÿÿÿ8Εκ–²-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ίέ—Ρÿÿÿÿÿ8ªη—²-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ΧΎ£ο8ªη—²-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(εΡ8ªη—²-
