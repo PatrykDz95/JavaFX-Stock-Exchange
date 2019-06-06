@@ -1,4 +1,5 @@
 
-msquid:CallToDeprecatedMethod">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±ρή8Ύ§–²-
-[
-squid:S106"9Replace this use of System.out or System.err by a logger.(Δ²‰τόÿÿÿÿ8Ύ§–²-
+msquid:CallToDeprecatedMethod ">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±ρή8Ύ§–²-
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(― ί8ΤώÒ²-
+V
+squid:S106("9Replace this use of System.out or System.err by a logger.(ÒΚ¬Ή8Ύ§–²-

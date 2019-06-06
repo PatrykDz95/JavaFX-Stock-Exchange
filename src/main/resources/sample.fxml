@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
@@ -18,22 +15,10 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane prefHeight="349.0" prefWidth="588.0">
+      <Pane prefHeight="496.0" prefWidth="832.0">
          <children>
-            <VBox prefHeight="349.0" prefWidth="165.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" styleClass="sidebar" stylesheets="@stylesheet.css" />
-               </children></VBox>
-            <AreaChart layoutX="162.0" prefHeight="238.0" prefWidth="426.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </AreaChart>
-            <PieChart layoutX="200.0" layoutY="211.0" prefHeight="138.0" prefWidth="155.0" />
-         </children>
-      </Pane>
+            <Label fx:id="label" layoutX="666.0" prefHeight="54.0" prefWidth="166.0" />
+            <PieChart fx:id="pieChart" layoutX="480.0" layoutY="146.0" prefHeight="213.0" prefWidth="297.0" />
+         </children></Pane>
    </children>
 </GridPane>
