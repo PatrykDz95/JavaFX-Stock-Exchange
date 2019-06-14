@@ -1,5 +1,5 @@
 
-msquid:CallToDeprecatedMethod ">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±žñÞ8¾§Ž–²-
-isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¯˜ ß8ÔþÒ˜²-
 V
-squid:S106("9Replace this use of System.out or System.err by a logger.(ÒÊ¬¹8¾§Ž–²-
+squid:S106!"9Replace this use of System.out or System.err by a logger.(ÒÊ¬¹8šãÛó²-
+msquid:CallToDeprecatedMethod">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±žñÞ8šãÛó²-
+fsquid:UselessImportCheck";Remove this unused import 'javafx.scene.control.TextField'.(¨¢¤¶8æø¤õ²-
