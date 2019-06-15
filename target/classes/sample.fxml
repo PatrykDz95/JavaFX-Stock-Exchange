@@ -23,7 +23,6 @@
    <children>
       <Pane prefHeight="496.0" prefWidth="832.0">
          <children>
-            <Label fx:id="label" layoutX="666.0" prefHeight="54.0" prefWidth="166.0" />
             <PieChart fx:id="pieChart" layoutX="480.0" layoutY="146.0" prefHeight="213.0" prefWidth="297.0" />
             <BarChart fx:id="barChart" layoutX="8.0">
               <xAxis>
@@ -35,11 +34,18 @@
             </BarChart>
             <VBox layoutX="697.0" prefHeight="496.0" prefWidth="135.0" styleClass="sidebar" stylesheets="@stylesheet.css">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="sidebar" stylesheets="@stylesheet.css" text="Bar Chart" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" styleClass="sidebar" stylesheets="@stylesheet.css" text="Bar Chart" textFill="#3ae04473">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Button>
+               </children></VBox>
+            <VBox layoutX="588.0" layoutY="27.0" prefHeight="25.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="ciscoLabel" prefHeight="17.0" prefWidth="100.0" text="Label" />
+                  <Label fx:id="appleLabel" prefHeight="54.0" prefWidth="166.0" />
+                  <Label fx:id="ibmLabel" prefHeight="17.0" prefWidth="100.0" text="Label" />
+                  <Label fx:id="tencentLabel" prefHeight="17.0" prefWidth="104.0" text="Label" />
                </children></VBox>
          </children></Pane>
    </children>

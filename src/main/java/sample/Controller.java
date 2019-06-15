@@ -1,9 +1,14 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import pl.zankowski.iextrading4j.api.stocks.Quote;
 import pl.zankowski.iextrading4j.client.IEXCloudClient;
 import pl.zankowski.iextrading4j.client.IEXCloudTokenBuilder;
@@ -14,7 +19,13 @@ import pl.zankowski.iextrading4j.client.rest.request.stocks.QuoteRequestBuilder;
 public class Controller {
 
     @FXML
-    Label label;
+    Label ciscoLabel;
+    @FXML
+    Label appleLabel;
+    @FXML
+    Label ibmLabel;
+    @FXML
+    Label tencentLabel;
     @FXML
     PieChart pieChart;
     @FXML
@@ -44,7 +55,7 @@ public class Controller {
                 .withSymbol("TME")
                 .build());
         //System.out.println(quote.getChange());
-        //label.setText(String.valueOf(quote.getWeek52High()));
+
         xAxis.setLabel("IEX by volume");
         xAxis.setTickLabelRotation(90);
         yAxis.setLabel("Company");
@@ -57,6 +68,15 @@ public class Controller {
         companyPrice.getData().add(new XYChart.Data( tencent.getSymbol(), tencent.getLatestPrice()));
         barChart.getData().add(companyPrice);
 
+        ciscoLabel.setText(String.valueOf(cisco.getChange()));
+        appleLabel.setText(String.valueOf(apple.getChange()));
+        ibmLabel.setText(String.valueOf(ibm.getChange()));
+        tencentLabel.setText(String.valueOf(ibm.getChange()));
+        changeColor(cisco.getChange().doubleValue(), ciscoLabel);
+        changeColor(apple.getChange().doubleValue(), appleLabel);
+        changeColor(ibm.getChange().doubleValue(), ibmLabel);
+        changeColor(tencent.getChange().doubleValue(), tencentLabel);
+
         Node n = barChart.lookup(".data0.chart-bar");
         n.setStyle("-fx-bar-fill: #ce712f");
         n = barChart.lookup(".data1.chart-bar");
@@ -66,6 +86,22 @@ public class Controller {
         n = barChart.lookup(".data3.chart-bar");
         n.setStyle("-fx-bar-fill: #dbd95e");
 
+    }
+
+    private void changeColor(double change, Label label){
+        if(change>0){
+            label.setBackground(new Background(new BackgroundFill(
+                    Color.GREEN,
+                    CornerRadii.EMPTY,
+                    Insets.EMPTY
+            )));
+        }else{
+            label.setBackground(new Background(new BackgroundFill(
+                    Color.RED,
+                    CornerRadii.EMPTY,
+                    Insets.EMPTY
+            )));
+        }
     }
 
 }
