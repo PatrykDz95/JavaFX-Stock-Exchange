@@ -4,3 +4,6 @@
 .sidebar{
     -fx-background-color: #333645;
 }
+.labelBorder{
+    -fx-border-color: black;
+}

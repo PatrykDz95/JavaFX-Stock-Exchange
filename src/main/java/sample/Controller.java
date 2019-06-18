@@ -18,20 +18,16 @@ import pl.zankowski.iextrading4j.client.IEXTradingApiVersion;
 import pl.zankowski.iextrading4j.client.IEXTradingClient;
 import pl.zankowski.iextrading4j.client.rest.request.stocks.QuoteRequestBuilder;
 
+import java.util.*;
+
 public class Controller {
 
     @FXML
     VBox vboxLabel;
     @FXML
-    Label ciscoLabel;
+    Label ciscoLabel, appleLabel, ibmLabel, tencentLabel, microsoftLabel;
     @FXML
-    Label appleLabel;
-    @FXML
-    Label ibmLabel;
-    @FXML
-    Label tencentLabel;
-    @FXML
-    Label microsoftLabel;
+    Label ciscoSymbolLabel, appleSymbolLabel, ibmSymbolLabel, tencentSymbolLabel, microsoftSymbolLabel;
     @FXML
     PieChart pieChart;
     @FXML
@@ -42,7 +38,6 @@ public class Controller {
     BarChart<String, Number> barChart;
 
     public void initialize() {
-
         final IEXCloudClient iexTradingClient = IEXTradingClient.create(IEXTradingApiVersion.IEX_CLOUD_BETA_SANDBOX,
                 new IEXCloudTokenBuilder()
                         .withPublishableToken("Tpk_18dfe6cebb4f41ffb219b9680f9acaf2")
@@ -63,7 +58,19 @@ public class Controller {
         final Quote microsoft = iexTradingClient.executeRequest(new QuoteRequestBuilder()
                 .withSymbol("MSFT")
                 .build());
-        //System.out.println(quote.getChange());
+
+        Map<Quote, Label> companyList = new HashMap();
+        companyList.put(cisco, ciscoLabel);
+        companyList.put(tencent, tencentLabel);
+        companyList.put(apple, appleLabel);
+        companyList.put(ibm, ibmLabel);
+        companyList.put(microsoft, microsoftLabel);
+
+        setCompanySymbolLabel(ciscoSymbolLabel, cisco);
+        setCompanySymbolLabel(appleSymbolLabel, apple);
+        setCompanySymbolLabel(ibmSymbolLabel, ibm);
+        setCompanySymbolLabel(tencentSymbolLabel, tencent);
+        setCompanySymbolLabel(microsoftSymbolLabel, microsoft);
 
         xAxis.setLabel("IEX by volume");
         xAxis.setTickLabelRotation(90);
@@ -87,18 +94,7 @@ public class Controller {
             }
         }
 
-        ciscoLabel.setText(" " + String.valueOf(cisco.getChange()) + "   " + cisco.getSymbol());
-        changeColor(cisco.getChange().doubleValue(), ciscoLabel);
-        appleLabel.setText(" " + String.valueOf(apple.getChange()) + "   " + apple.getSymbol());
-        changeColor(apple.getChange().doubleValue(), appleLabel);
-        ibmLabel.setText(" " + String.valueOf(ibm.getChange()) + "   " + ibm.getSymbol());
-        changeColor(ibm.getChange().doubleValue(), ibmLabel);
-        tencentLabel.setText(" " + String.valueOf(tencent.getChange()) + "   " + tencent.getSymbol());
-        changeColor(tencent.getChange().doubleValue(), tencentLabel);
-        tencentLabel.setText(" " + String.valueOf(tencent.getChange()) + "   " + tencent.getSymbol());
-        changeColor(tencent.getChange().doubleValue(), tencentLabel);
-        microsoftLabel.setText(" " + String.valueOf(microsoft.getChange()) + "   " + microsoft.getSymbol());
-        changeColor(microsoft.getChange().doubleValue(), microsoftLabel);
+        setLabelWithChangeValue(companyList);
 
         Node n = barChart.lookup(".data0.chart-bar");
         n.setStyle("-fx-bar-fill: #ce712f");
@@ -110,9 +106,38 @@ public class Controller {
         n.setStyle("-fx-bar-fill: #dbd95e");
         n = barChart.lookup(".data3.chart-bar");
         n.setStyle("-fx-bar-fill: #2d994f");
+
+
     }
 
-    private void changeColor(double change, Label label){
+    private void setLabelWithChangeValue(Map<Quote, Label> companyLabel) {
+
+        companyLabel.forEach((company, label) -> {
+            setLabelText((Label) label, (Quote) company);
+            changeColorOfLabel(((Quote) company).getChange().doubleValue(), (Label) label);
+        });
+//
+//        setLabelText(tencentLabel, tencent);
+//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
+//        setLabelText(tencentLabel, tencent);
+//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
+//        setLabelText(tencentLabel, tencent);
+//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
+//        setLabelText(tencentLabel, tencent);
+//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
+//        setLabelText(microsoftLabel, microsoft);
+//        changeColorOfLabel(microsoft.getChange().doubleValue(), microsoftLabel);
+    }
+
+    private void setLabelText(Label companyLabel, Quote company){
+        companyLabel.setText(" " + String.valueOf(company.getChange()));
+    }
+
+    private void setCompanySymbolLabel(Label companyLabel, Quote company){
+        companyLabel.setText(company.getSymbol());
+    }
+
+    private void changeColorOfLabel(double change, Label label){
         if(change>0){
             label.setBackground(new Background(new BackgroundFill(
                     Color.rgb(60, 183, 79),
