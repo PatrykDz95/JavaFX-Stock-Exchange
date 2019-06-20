@@ -9,7 +9,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import pl.zankowski.iextrading4j.api.stocks.Quote;
 import pl.zankowski.iextrading4j.client.IEXCloudClient;
@@ -23,13 +22,11 @@ import java.util.*;
 public class Controller {
 
     @FXML
-    VBox vboxLabel;
-    @FXML
     Label ciscoLabel, appleLabel, ibmLabel, tencentLabel, microsoftLabel;
     @FXML
     Label ciscoSymbolLabel, appleSymbolLabel, ibmSymbolLabel, tencentSymbolLabel, microsoftSymbolLabel;
     @FXML
-    PieChart pieChart;
+    Label realtimePriceCisco, realtimePriceApple, realtimePriceIbm, realtimePriceTencent, realtimePriceMicrosoft;
     @FXML
     NumberAxis xAxis;
     @FXML
@@ -72,6 +69,14 @@ public class Controller {
         setCompanySymbolLabel(tencentSymbolLabel, tencent);
         setCompanySymbolLabel(microsoftSymbolLabel, microsoft);
 
+        setWithChangeValueLabel(companyList);
+
+        setRealtimePriceLabel(realtimePriceCisco, cisco);
+        setRealtimePriceLabel(realtimePriceApple, apple);
+        setRealtimePriceLabel(realtimePriceIbm, ibm);
+        setRealtimePriceLabel(realtimePriceTencent, tencent);
+        setRealtimePriceLabel(realtimePriceMicrosoft, microsoft);
+
         xAxis.setLabel("IEX by volume");
         xAxis.setTickLabelRotation(90);
         yAxis.setLabel("Company");
@@ -94,8 +99,6 @@ public class Controller {
             }
         }
 
-        setLabelWithChangeValue(companyList);
-
         Node n = barChart.lookup(".data0.chart-bar");
         n.setStyle("-fx-bar-fill: #ce712f");
         n = barChart.lookup(".data1.chart-bar");
@@ -106,27 +109,13 @@ public class Controller {
         n.setStyle("-fx-bar-fill: #dbd95e");
         n = barChart.lookup(".data3.chart-bar");
         n.setStyle("-fx-bar-fill: #2d994f");
-
-
     }
 
-    private void setLabelWithChangeValue(Map<Quote, Label> companyLabel) {
-
+    private void setWithChangeValueLabel(Map<Quote, Label> companyLabel) {
         companyLabel.forEach((company, label) -> {
             setLabelText((Label) label, (Quote) company);
             changeColorOfLabel(((Quote) company).getChange().doubleValue(), (Label) label);
         });
-//
-//        setLabelText(tencentLabel, tencent);
-//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
-//        setLabelText(tencentLabel, tencent);
-//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
-//        setLabelText(tencentLabel, tencent);
-//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
-//        setLabelText(tencentLabel, tencent);
-//        changeColorOfLabel(tencent.getChange().doubleValue(), tencentLabel);
-//        setLabelText(microsoftLabel, microsoft);
-//        changeColorOfLabel(microsoft.getChange().doubleValue(), microsoftLabel);
     }
 
     private void setLabelText(Label companyLabel, Quote company){
@@ -135,6 +124,10 @@ public class Controller {
 
     private void setCompanySymbolLabel(Label companyLabel, Quote company){
         companyLabel.setText(company.getSymbol());
+    }
+
+    private void setRealtimePriceLabel(Label companyLabel, Quote company){
+        companyLabel.setText(String.valueOf(company.getIexRealtimeSize()));
     }
 
     private void changeColorOfLabel(double change, Label label){

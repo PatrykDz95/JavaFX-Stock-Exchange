@@ -5,9 +5,9 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
@@ -31,7 +31,7 @@
                 <NumberAxis side="LEFT" fx:id="xAxis" />
               </yAxis>
             </BarChart>
-            <VBox id="vboxLabel" layoutX="8.0" layoutY="335.0" prefHeight="135.0" prefWidth="79.0">
+            <VBox id="CompanySymbolLabel" layoutX="8.0" layoutY="335.0" prefHeight="135.0" prefWidth="79.0">
                <children>
                   <Label fx:id="ciscoSymbolLabel" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
                      <font>
@@ -56,38 +56,6 @@
                   </Label>
                </children></VBox>
             <ToggleButton layoutX="584.0" layoutY="457.0" mnemonicParsing="false" text="ToggleButton" />
-            <VBox id="vboxLabel" layoutX="287.0" layoutY="322.0" prefHeight="72.0" prefWidth="171.0">
-               <children>
-                  <Label fx:id="" prefHeight="72.0" prefWidth="171.0" underline="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <effect>
-                        <BoxBlur />
-                     </effect>
-                  </Label>
-                  <Label fx:id="" prefHeight="61.0" prefWidth="175.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="" prefHeight="71.0" prefWidth="172.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="" prefHeight="49.0" prefWidth="171.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="" prefHeight="64.0" prefWidth="171.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
             <VBox layoutX="87.0" layoutY="335.0" prefHeight="135.0" prefWidth="112.0">
                <children>
                   <Label id="symbolLabel" fx:id="ciscoLabel" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
@@ -117,6 +85,54 @@
                   </Label>
                </children>
             </VBox>
+            <VBox layoutX="199.0" layoutY="335.0" prefHeight="135.0" prefWidth="112.0">
+               <children>
+                  <Label fx:id="realtimePriceCisco" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                   <Label fx:id="realtimePriceApple" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="realtimePriceIbm" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="realtimePriceTencent" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="realtimePriceMicrosoft" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox layoutX="8.0" layoutY="305.0" prefHeight="30.0" prefWidth="326.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="79.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Company" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="112.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Change Value" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="89.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Real Time Price" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children></Pane>
    </children>
 </GridPane>
