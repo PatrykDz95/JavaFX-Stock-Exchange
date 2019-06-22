@@ -21,9 +21,9 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane prefHeight="496.0" prefWidth="832.0">
+      <Pane prefHeight="496.0" prefWidth="832.0" styleClass="sidebar" stylesheets="@stylesheet.css">
          <children>
-            <BarChart fx:id="barChart" layoutX="8.0" prefHeight="221.0" prefWidth="326.0">
+            <BarChart fx:id="barChart" layoutX="8.0" prefHeight="221.0" prefWidth="326.0" styleClass="sidebar" stylesheets="@stylesheet.css">
               <xAxis>
                 <CategoryAxis fx:id="yAxis" side="BOTTOM" />
               </xAxis>
@@ -33,52 +33,52 @@
             </BarChart>
             <VBox id="CompanySymbolLabel" layoutX="8.0" layoutY="335.0" prefHeight="135.0" prefWidth="79.0">
                <children>
-                  <Label fx:id="ciscoSymbolLabel" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="ciscoSymbolLabel" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="appleSymbolLabel" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="appleSymbolLabel" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="ibmSymbolLabel" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="ibmSymbolLabel" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="tencentSymbolLabel" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="tencentSymbolLabel" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="microsoftSymbolLabel" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="microsoftSymbolLabel" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children></VBox>
-            <ToggleButton layoutX="584.0" layoutY="457.0" mnemonicParsing="false" text="ToggleButton" />
+            <ToggleButton fx:id="refreshBtn" layoutX="584.0" layoutY="457.0" mnemonicParsing="false" text="ToggleButton" />
             <VBox layoutX="87.0" layoutY="335.0" prefHeight="135.0" prefWidth="112.0">
                <children>
-                  <Label id="symbolLabel" fx:id="ciscoLabel" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label id="symbolLabel" fx:id="ciscoLabel" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label id="symbolLabel1" fx:id="appleLabel" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label id="symbolLabel1" fx:id="appleLabel" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label id="symbolLabel2" fx:id="ibmLabel" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label id="symbolLabel2" fx:id="ibmLabel" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label id="symbolLabel3" fx:id="tencentLabel" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label id="symbolLabel3" fx:id="tencentLabel" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label id="symbolLabel4" fx:id="microsoftLabel" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label id="symbolLabel4" fx:id="microsoftLabel" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -87,27 +87,27 @@
             </VBox>
             <VBox layoutX="199.0" layoutY="335.0" prefHeight="135.0" prefWidth="112.0">
                <children>
-                  <Label fx:id="realtimePriceCisco" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="realtimePriceCisco" prefHeight="72.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                   <Label fx:id="realtimePriceApple" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                   <Label fx:id="realtimePriceApple" prefHeight="61.0" prefWidth="175.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="realtimePriceIbm" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="realtimePriceIbm" prefHeight="71.0" prefWidth="172.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="realtimePriceTencent" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="realtimePriceTencent" prefHeight="49.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="realtimePriceMicrosoft" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css">
+                  <Label fx:id="realtimePriceMicrosoft" prefHeight="64.0" prefWidth="171.0" styleClass="labelBorder" stylesheets="@stylesheet.css" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -116,17 +116,17 @@
             </VBox>
             <HBox layoutX="8.0" layoutY="305.0" prefHeight="30.0" prefWidth="326.0">
                <children>
-                  <Label prefHeight="30.0" prefWidth="79.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Company" textAlignment="CENTER">
+                  <Label prefHeight="30.0" prefWidth="79.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Company" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="112.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Change Value" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="112.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Change Value" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="89.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="Real Time Price" textAlignment="CENTER">
+                  <Label alignment="CENTER" layoutX="89.0" layoutY="10.0" prefHeight="30.0" prefWidth="112.0" styleClass="labelBorder" stylesheets="@stylesheet.css" text="AvgTotalVolume" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

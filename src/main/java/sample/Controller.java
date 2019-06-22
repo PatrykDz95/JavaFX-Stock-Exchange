@@ -1,14 +1,19 @@
 package sample;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import pl.zankowski.iextrading4j.api.stocks.Quote;
 import pl.zankowski.iextrading4j.client.IEXCloudClient;
@@ -33,6 +38,8 @@ public class Controller {
     CategoryAxis yAxis;
     @FXML
     BarChart<String, Number> barChart;
+    @FXML
+    ToggleButton refreshBtn;
 
     public void initialize() {
         final IEXCloudClient iexTradingClient = IEXTradingClient.create(IEXTradingApiVersion.IEX_CLOUD_BETA_SANDBOX,
@@ -40,19 +47,19 @@ public class Controller {
                         .withPublishableToken("Tpk_18dfe6cebb4f41ffb219b9680f9acaf2")
                         .withSecretToken("Tsk_3eedff6f5c284e1a8b9bc16c54dd1af3")
                         .build());
-        final Quote cisco = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+        Quote cisco = iexTradingClient.executeRequest(new QuoteRequestBuilder()
                 .withSymbol("CSCO")
                 .build());
-        final Quote apple = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+        Quote apple = iexTradingClient.executeRequest(new QuoteRequestBuilder()
                 .withSymbol("AAPL")
                 .build());
-        final Quote ibm = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+        Quote ibm = iexTradingClient.executeRequest(new QuoteRequestBuilder()
                 .withSymbol("IBM")
                 .build());
-        final Quote tencent = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+        Quote tencent = iexTradingClient.executeRequest(new QuoteRequestBuilder()
                 .withSymbol("TME")
                 .build());
-        final Quote microsoft = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+        Quote microsoft = iexTradingClient.executeRequest(new QuoteRequestBuilder()
                 .withSymbol("MSFT")
                 .build());
 
@@ -78,37 +85,51 @@ public class Controller {
         setRealtimePriceLabel(realtimePriceMicrosoft, microsoft);
 
         xAxis.setLabel("IEX by volume");
+        //xAxis.setTickLabelFill(Color.rgb(249, 251, 255));
         xAxis.setTickLabelRotation(90);
         yAxis.setLabel("Company");
+        //yAxis.setTickLabelFill(Color.rgb(249, 251, 255));
         barChart.setLegendVisible(false);
+        barChart.setAnimated(false);
 
-        XYChart.Series<String, Number> companyPrice = new XYChart.Series();
-        companyPrice.getData().add(new XYChart.Data( cisco.getSymbol(), cisco.getLatestPrice()));
-        companyPrice.getData().add(new XYChart.Data( apple.getSymbol(), apple.getLatestPrice()));
-        companyPrice.getData().add(new XYChart.Data( ibm.getSymbol(), ibm.getLatestPrice()));
-        companyPrice.getData().add(new XYChart.Data( tencent.getSymbol(), tencent.getLatestPrice()));
-        companyPrice.getData().add(new XYChart.Data( microsoft.getSymbol(), microsoft.getLatestPrice()));
-        barChart.getData().add(companyPrice);
+        refreshBtn.setOnAction(arg0 -> {
+            barChart.getData().clear();
+            Quote cisco1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                    .withSymbol("CSCO")
+                    .build());
+            Quote apple1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                    .withSymbol("AAPL")
+                    .build());
+            Quote ibm1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                    .withSymbol("IBM")
+                    .build());
+            Quote tencent1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                    .withSymbol("TME")
+                    .build());
+            Quote microsoft1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                    .withSymbol("MSFT")
+                    .build());
+            XYChart.Series<String, Number> companyPrice = new XYChart.Series();
+            companyPrice.getData().add(new XYChart.Data( cisco1.getSymbol(), cisco1.getLatestPrice()));
+            companyPrice.getData().add(new XYChart.Data( apple1.getSymbol(), apple1.getLatestPrice()));
+            companyPrice.getData().add(new XYChart.Data( ibm1.getSymbol(), ibm1.getLatestPrice()));
+            companyPrice.getData().add(new XYChart.Data( tencent1.getSymbol(), tencent1.getLatestPrice()));
+            companyPrice.getData().add(new XYChart.Data( microsoft1.getSymbol(), microsoft1.getLatestPrice()));
+            barChart.getData().addAll(companyPrice);
 
-        for (final XYChart.Series<String, Number> series : barChart.getData()) {
-            for (final XYChart.Data<String, Number> data : series.getData()) {
-                Tooltip tooltip = new Tooltip();
-                tooltip.setText(data.getXValue().toString() +" "+
-                        data.getYValue().toString());
-                Tooltip.install(data.getNode(), tooltip);
-            }
-        }
+            useTooltipForBarChart();
 
-        Node n = barChart.lookup(".data0.chart-bar");
-        n.setStyle("-fx-bar-fill: #ce712f");
-        n = barChart.lookup(".data1.chart-bar");
-        n.setStyle("-fx-bar-fill: #53a0e0");
-        n = barChart.lookup(".data2.chart-bar");
-        n.setStyle("-fx-bar-fill: #653fa3");
-        n = barChart.lookup(".data3.chart-bar");
-        n.setStyle("-fx-bar-fill: #dbd95e");
-        n = barChart.lookup(".data3.chart-bar");
-        n.setStyle("-fx-bar-fill: #2d994f");
+            Node n = barChart.lookup(".data0.chart-bar");
+            n.setStyle("-fx-bar-fill: #ce712f");
+            n = barChart.lookup(".data1.chart-bar");
+            n.setStyle("-fx-bar-fill: #53a0e0");
+            n = barChart.lookup(".data2.chart-bar");
+            n.setStyle("-fx-bar-fill: #653fa3");
+            n = barChart.lookup(".data3.chart-bar");
+            n.setStyle("-fx-bar-fill: #dbd95e");
+            n = barChart.lookup(".data3.chart-bar");
+            n.setStyle("-fx-bar-fill: #2d994f");
+        });
     }
 
     private void setWithChangeValueLabel(Map<Quote, Label> companyLabel) {
@@ -127,7 +148,7 @@ public class Controller {
     }
 
     private void setRealtimePriceLabel(Label companyLabel, Quote company){
-        companyLabel.setText(String.valueOf(company.getIexRealtimeSize()));
+        companyLabel.setText(String.valueOf(company.getAvgTotalVolume()));
     }
 
     private void changeColorOfLabel(double change, Label label){
@@ -143,6 +164,17 @@ public class Controller {
                     CornerRadii.EMPTY,
                     Insets.EMPTY
             )));
+        }
+    }
+
+    private void useTooltipForBarChart(){
+        for (final XYChart.Series<String, Number> series : barChart.getData()) {
+            for (final XYChart.Data<String, Number> data : series.getData()) {
+                Tooltip tooltip = new Tooltip();
+                tooltip.setText(data.getXValue().toString() +" "+
+                        data.getYValue().toString());
+                Tooltip.install(data.getNode(), tooltip);
+            }
         }
     }
 

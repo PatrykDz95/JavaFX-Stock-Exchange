@@ -1,5 +1,0 @@
-
-fsquid:UselessImportCheck"=Remove this unused import 'javafx.collections.FXCollections'.(´¶²Æ8òúüô²-
-lsquid:UselessImportCheck">Remove this unused import 'javafx.collections.ObservableList'.(ÄÜ€éüÿÿÿÿ8òúüô²-
-Xsquid:UselessImportCheck"/Remove this unused import 'javafx.scene.Group'.(Ÿ°ô–8ËÕõ²-
-[squid:UselessImportCheck"-Remove this unused import 'javafx.fxml.FXML'.(ÃÚ¢„şÿÿÿÿ8‡äÓó²-

@@ -1,13 +1,16 @@
 
-Fsquid:S1905u"(Remove this unnecessary cast to "Quote".(õÈ¡8ÎÌà¶-
-Ssquid:S1659"0Declare "tencentSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8™Âåà¶-
-Isquid:S1659"&Declare "ibmLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ëê©à¶-
-Qsquid:S1659".Declare "appleSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8™Âåà¶-
-Usquid:S1659"2Declare "microsoftSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8™Âåà¶-
-Ksquid:S1659"(Declare "appleLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ëê©à¶-
-Osquid:S1659",Declare "microsoftLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ëê©à¶-
-msquid:CallToDeprecatedMethod)">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±ñŞ8ëê©à¶-
-Msquid:S1659"*Declare "tencentLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ëê©à¶-
-Osquid:S1659",Declare "ibmSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8™Âåà¶-
-Osquid:S1153…"1Directly append the argument of String.valueOf().(Ó©ğJ8ëê©à¶-
-nsquid:CommentedOutCodeLinex"<This block of commented-out lines of code should be removed.(ºÛò¡ıÿÿÿÿ8»ÓÈà¶-
+Osquid:S1659",Declare "ibmSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+Ksquid:S1659"(Declare "appleLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+Usquid:S1659"2Declare "realtimePriceTencent" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+msquid:CallToDeprecatedMethod&">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±ñŞ8Ş²à®·-
+Fsquid:S1905u"(Remove this unnecessary cast to "Quote".(õÈ¡8ÄçÜ®·-
+Usquid:S1659"2Declare "microsoftSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+Isquid:S1659"&Declare "ibmLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+Osquid:S1659",Declare "microsoftLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+Qsquid:S1659".Declare "realtimePriceIbm" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Msquid:S1659"*Declare "tencentLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+Wsquid:S1659"4Declare "realtimePriceMicrosoft" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Ssquid:S1659"0Declare "realtimePriceApple" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Qsquid:S1659".Declare "appleSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+Nsquid:S1153z"1Directly append the argument of String.valueOf().(Ó©ğJ8ÄçÜ®·-
+Ssquid:S1659"0Declare "tencentSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
