@@ -7,3 +7,9 @@
 .labelBorder{
     -fx-border-color: black;
 }
+
+.barchart{
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #ffffff;
+    -fx-color-label-visible: #ffffff;
+}

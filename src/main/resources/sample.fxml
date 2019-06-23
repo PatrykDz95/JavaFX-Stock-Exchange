@@ -23,7 +23,7 @@
    <children>
       <Pane prefHeight="496.0" prefWidth="832.0" styleClass="sidebar" stylesheets="@stylesheet.css">
          <children>
-            <BarChart fx:id="barChart" layoutX="8.0" prefHeight="221.0" prefWidth="326.0" styleClass="sidebar" stylesheets="@stylesheet.css">
+            <BarChart fx:id="barChart" animated="false" prefHeight="255.0" prefWidth="362.0" styleClass="barchart" stylesheets="@stylesheet.css">
               <xAxis>
                 <CategoryAxis fx:id="yAxis" side="BOTTOM" />
               </xAxis>

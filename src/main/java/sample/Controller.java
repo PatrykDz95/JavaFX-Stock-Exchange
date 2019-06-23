@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -92,43 +94,64 @@ public class Controller {
         barChart.setLegendVisible(false);
         barChart.setAnimated(false);
 
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() throws Exception {
+                int i = 0;
+                while (true) {
+                    final int finalI = i;
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            barChart.getData().clear();
+                            Quote cisco1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                                    .withSymbol("CSCO")
+                                    .build());
+                            Quote apple1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                                    .withSymbol("AAPL")
+                                    .build());
+                            Quote ibm1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                                    .withSymbol("IBM")
+                                    .build());
+                            Quote tencent1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                                    .withSymbol("TME")
+                                    .build());
+                            Quote microsoft1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                                    .withSymbol("MSFT")
+                                    .build());
+                            XYChart.Series<String, Number> companyPrice = new XYChart.Series();
+                            companyPrice.getData().add(new XYChart.Data( cisco1.getSymbol(), cisco1.getLatestPrice()));
+                            companyPrice.getData().add(new XYChart.Data( apple1.getSymbol(), apple1.getLatestPrice()));
+                            companyPrice.getData().add(new XYChart.Data( ibm1.getSymbol(), ibm1.getLatestPrice()));
+                            companyPrice.getData().add(new XYChart.Data( tencent1.getSymbol(), tencent1.getLatestPrice()));
+                            companyPrice.getData().add(new XYChart.Data( microsoft1.getSymbol(), microsoft1.getLatestPrice()));
+                            barChart.getData().addAll(companyPrice);
+
+                            useTooltipForBarChart();
+
+                            Node n = barChart.lookup(".data0.chart-bar");
+                            n.setStyle("-fx-bar-fill: #ce712f");
+                            n = barChart.lookup(".data1.chart-bar");
+                            n.setStyle("-fx-bar-fill: #53a0e0");
+                            n = barChart.lookup(".data2.chart-bar");
+                            n.setStyle("-fx-bar-fill: #653fa3");
+                            n = barChart.lookup(".data3.chart-bar");
+                            n.setStyle("-fx-bar-fill: #dbd95e");
+                            n = barChart.lookup(".data3.chart-bar");
+                            n.setStyle("-fx-bar-fill: #2d994f");
+                        }
+                    });
+                    i++;
+                    Thread.sleep(1000);
+                }
+            }
+        };
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        th.start();
+
         refreshBtn.setOnAction(arg0 -> {
-            barChart.getData().clear();
-            Quote cisco1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                    .withSymbol("CSCO")
-                    .build());
-            Quote apple1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                    .withSymbol("AAPL")
-                    .build());
-            Quote ibm1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                    .withSymbol("IBM")
-                    .build());
-            Quote tencent1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                    .withSymbol("TME")
-                    .build());
-            Quote microsoft1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                    .withSymbol("MSFT")
-                    .build());
-            XYChart.Series<String, Number> companyPrice = new XYChart.Series();
-            companyPrice.getData().add(new XYChart.Data( cisco1.getSymbol(), cisco1.getLatestPrice()));
-            companyPrice.getData().add(new XYChart.Data( apple1.getSymbol(), apple1.getLatestPrice()));
-            companyPrice.getData().add(new XYChart.Data( ibm1.getSymbol(), ibm1.getLatestPrice()));
-            companyPrice.getData().add(new XYChart.Data( tencent1.getSymbol(), tencent1.getLatestPrice()));
-            companyPrice.getData().add(new XYChart.Data( microsoft1.getSymbol(), microsoft1.getLatestPrice()));
-            barChart.getData().addAll(companyPrice);
 
-            useTooltipForBarChart();
-
-            Node n = barChart.lookup(".data0.chart-bar");
-            n.setStyle("-fx-bar-fill: #ce712f");
-            n = barChart.lookup(".data1.chart-bar");
-            n.setStyle("-fx-bar-fill: #53a0e0");
-            n = barChart.lookup(".data2.chart-bar");
-            n.setStyle("-fx-bar-fill: #653fa3");
-            n = barChart.lookup(".data3.chart-bar");
-            n.setStyle("-fx-bar-fill: #dbd95e");
-            n = barChart.lookup(".data3.chart-bar");
-            n.setStyle("-fx-bar-fill: #2d994f");
         });
     }
 

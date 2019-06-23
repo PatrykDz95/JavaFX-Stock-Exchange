@@ -1,16 +1,26 @@
 
-Osquid:S1659",Declare "ibmSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
-Ksquid:S1659"(Declare "appleLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
-Usquid:S1659"2Declare "realtimePriceTencent" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
-msquid:CallToDeprecatedMethod&">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±ñŞ8Ş²à®·-
-Fsquid:S1905u"(Remove this unnecessary cast to "Quote".(õÈ¡8ÄçÜ®·-
-Usquid:S1659"2Declare "microsoftSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
-Isquid:S1659"&Declare "ibmLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
-Osquid:S1659",Declare "microsoftLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
-Qsquid:S1659".Declare "realtimePriceIbm" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
-Msquid:S1659"*Declare "tencentLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
-Wsquid:S1659"4Declare "realtimePriceMicrosoft" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
-Ssquid:S1659"0Declare "realtimePriceApple" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
-Qsquid:S1659".Declare "appleSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
-Nsquid:S1153z"1Directly append the argument of String.valueOf().(Ó©ğJ8ÄçÜ®·-
-Ssquid:S1659"0Declare "tencentSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+Nsquid:S1481f"+Remove this unused "finalI" local variable.(áëšóşÿÿÿÿ8‚Û™¸-
+Osquid:S1659 ",Declare "microsoftLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+Qsquid:S1659"".Declare "appleSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+Ssquid:S1659$"0Declare "realtimePriceApple" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Wsquid:S1659$"4Declare "realtimePriceMicrosoft" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Usquid:S1659$"2Declare "realtimePriceTencent" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Gsquid:S1905¡"(Remove this unnecessary cast to "Quote".(õÈ¡8ØŠ¬€¸-
+Ksquid:S1604g"(Make this anonymous inner class a lambda(ôâŠûıÿÿÿÿ8› —¸-
+nsquid:CommentedOutCodeLineZ"<This block of commented-out lines of code should be removed.(Ë‰•áùÿÿÿÿ8²ñ¡‚¸-
+isquid:CommentedOutCodeLine]"<This block of commented-out lines of code should be removed.(ü‡™ô8²ñ¡‚¸-
+Esquid:S2189e""Add an end condition to this loop.(˜ïˆÿÿÿÿÿ8› —¸-
+Osquid:S1153¦"1Directly append the argument of String.valueOf().(Ó©ğJ8ØŠ¬€¸-
+Isquid:S1659 "&Declare "ibmLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+Ksquid:S1659 "(Declare "appleLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+esquid:UselessImportCheck"5Remove this unused import 'javafx.scene.layout.VBox'.(íÆáÂùÿÿÿÿ8¸ÿê¸-
+Usquid:S1659""2Declare "microsoftSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+]squid:S1854f":Remove this useless assignment to local variable "finalI".(áëšóşÿÿÿÿ8‚Û™¸-
+Qsquid:S1659$".Declare "realtimePriceIbm" on a separate line.(­éÓòÿÿÿÿÿ8ÄçÜ®·-
+Ssquid:S1659""0Declare "tencentSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+hsquid:UselessImportCheck"8Remove this unused import 'javafx.scene.control.Button'.(Ë Í‹øÿÿÿÿ8¸ÿê¸-
+Msquid:S1659 "*Declare "tencentLabel" on a separate line.(üÒÇÑüÿÿÿÿ8ÄçÜ®·-
+msquid:CallToDeprecatedMethod/">Remove this use of "IEX_CLOUD_BETA_SANDBOX"; it is deprecated.(±ñŞ8’†®¸-
+Osquid:S1659"",Declare "ibmSymbolLabel" on a separate line.(×†…æúÿÿÿÿ8ÄçÜ®·-
+asquid:UselessImportCheck"6Remove this unused import 'javafx.event.EventHandler'.(º»û˜8¸ÿê¸-
+esquid:UselessImportCheck"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8¸ÿê¸-
