@@ -43,27 +43,15 @@ public class Controller {
     @FXML
     ToggleButton refreshBtn;
 
+    static volatile Quote cisco, apple, ibm, microsoft, tencent;
+
     public void initialize() {
         final IEXCloudClient iexTradingClient = IEXTradingClient.create(IEXTradingApiVersion.IEX_CLOUD_BETA_SANDBOX,
                 new IEXCloudTokenBuilder()
                         .withPublishableToken("Tpk_18dfe6cebb4f41ffb219b9680f9acaf2")
                         .withSecretToken("Tsk_3eedff6f5c284e1a8b9bc16c54dd1af3")
                         .build());
-        Quote cisco = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                .withSymbol("CSCO")
-                .build());
-        Quote apple = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                .withSymbol("AAPL")
-                .build());
-        Quote ibm = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                .withSymbol("IBM")
-                .build());
-        Quote tencent = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                .withSymbol("TME")
-                .build());
-        Quote microsoft = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                .withSymbol("MSFT")
-                .build());
+        UpdateApi(iexTradingClient);
 
         Map<Quote, Label> companyList = new HashMap();
         companyList.put(cisco, ciscoLabel);
@@ -87,10 +75,8 @@ public class Controller {
         setRealtimePriceLabel(realtimePriceMicrosoft, microsoft);
 
         xAxis.setLabel("IEX by volume");
-        //xAxis.setTickLabelFill(Color.rgb(249, 251, 255));
         xAxis.setTickLabelRotation(90);
         yAxis.setLabel("Company");
-        //yAxis.setTickLabelFill(Color.rgb(249, 251, 255));
         barChart.setLegendVisible(false);
         barChart.setAnimated(false);
 
@@ -100,59 +86,60 @@ public class Controller {
                 int i = 0;
                 while (true) {
                     final int finalI = i;
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            barChart.getData().clear();
-                            Quote cisco1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                                    .withSymbol("CSCO")
-                                    .build());
-                            Quote apple1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                                    .withSymbol("AAPL")
-                                    .build());
-                            Quote ibm1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                                    .withSymbol("IBM")
-                                    .build());
-                            Quote tencent1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                                    .withSymbol("TME")
-                                    .build());
-                            Quote microsoft1 = iexTradingClient.executeRequest(new QuoteRequestBuilder()
-                                    .withSymbol("MSFT")
-                                    .build());
-                            XYChart.Series<String, Number> companyPrice = new XYChart.Series();
-                            companyPrice.getData().add(new XYChart.Data( cisco1.getSymbol(), cisco1.getLatestPrice()));
-                            companyPrice.getData().add(new XYChart.Data( apple1.getSymbol(), apple1.getLatestPrice()));
-                            companyPrice.getData().add(new XYChart.Data( ibm1.getSymbol(), ibm1.getLatestPrice()));
-                            companyPrice.getData().add(new XYChart.Data( tencent1.getSymbol(), tencent1.getLatestPrice()));
-                            companyPrice.getData().add(new XYChart.Data( microsoft1.getSymbol(), microsoft1.getLatestPrice()));
-                            barChart.getData().addAll(companyPrice);
+                    Platform.runLater(() -> {
+                        barChart.getData().clear();
+                        UpdateApi(iexTradingClient);
+                        XYChart.Series<String, Number> companyPrice = new XYChart.Series();
+                        companyPrice.getData().add(new XYChart.Data( cisco.getSymbol(), cisco.getLatestPrice()));
+                        companyPrice.getData().add(new XYChart.Data( apple.getSymbol(), apple.getLatestPrice()));
+                        companyPrice.getData().add(new XYChart.Data( ibm.getSymbol(), ibm.getLatestPrice()));
+                        companyPrice.getData().add(new XYChart.Data( tencent.getSymbol(), tencent.getLatestPrice()));
+                        companyPrice.getData().add(new XYChart.Data( microsoft.getSymbol(), microsoft.getLatestPrice()));
+                        barChart.getData().addAll(companyPrice);
 
-                            useTooltipForBarChart();
+                        useTooltipForBarChart();
 
-                            Node n = barChart.lookup(".data0.chart-bar");
-                            n.setStyle("-fx-bar-fill: #ce712f");
-                            n = barChart.lookup(".data1.chart-bar");
-                            n.setStyle("-fx-bar-fill: #53a0e0");
-                            n = barChart.lookup(".data2.chart-bar");
-                            n.setStyle("-fx-bar-fill: #653fa3");
-                            n = barChart.lookup(".data3.chart-bar");
-                            n.setStyle("-fx-bar-fill: #dbd95e");
-                            n = barChart.lookup(".data3.chart-bar");
-                            n.setStyle("-fx-bar-fill: #2d994f");
-                        }
+                        Node n = barChart.lookup(".data0.chart-bar");
+                        n.setStyle("-fx-bar-fill: #ce712f");
+                        n = barChart.lookup(".data1.chart-bar");
+                        n.setStyle("-fx-bar-fill: #53a0e0");
+                        n = barChart.lookup(".data2.chart-bar");
+                        n.setStyle("-fx-bar-fill: #653fa3");
+                        n = barChart.lookup(".data3.chart-bar");
+                        n.setStyle("-fx-bar-fill: #dbd95e");
+                        n = barChart.lookup(".data3.chart-bar");
+                        n.setStyle("-fx-bar-fill: #2d994f");
                     });
                     i++;
-                    Thread.sleep(1000);
+                    try {
+                        Thread.sleep(3300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
         Thread th = new Thread(task);
         th.setDaemon(true);
         th.start();
+    }
 
-        refreshBtn.setOnAction(arg0 -> {
-
-        });
+    private void UpdateApi(IEXCloudClient iexTradingClient) {
+        cisco = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                .withSymbol("CSCO")
+                .build());
+        apple = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                .withSymbol("AAPL")
+                .build());
+        ibm = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                .withSymbol("IBM")
+                .build());
+        tencent = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                .withSymbol("TME")
+                .build());
+        microsoft = iexTradingClient.executeRequest(new QuoteRequestBuilder()
+                .withSymbol("MSFT")
+                .build());
     }
 
     private void setWithChangeValueLabel(Map<Quote, Label> companyLabel) {
